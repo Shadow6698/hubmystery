@@ -1,0 +1,165 @@
+Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Rain-Design/Unnamed/main/Library.lua'))()
+Library.Theme = "Dark"
+
+local Window = Library:Window({
+   Text = "Angel Hub"
+})
+
+-- Abas
+local TabScripts = Window:Tab({ Text = "Scripts" })
+local TabAdmin = Window:Tab({ Text = "Admin" })
+local TabScriptsNovos = Window:Tab({ Text = "Scripts Novos" }) -- Renomeado de Dead Rails
+local TabOutros = Window:Tab({ Text = "Outros" })
+local TabBrookhaven = Window:Tab({ Text = "Brookhaven" })
+local TabAlicia = Window:Tab({ Text = "Scripts da Alicia" }) -- Nova aba adicionada
+
+-- Seções
+local SectionScripts = TabScripts:Section({ Text = "Principais Scripts" })
+local SectionAdmin = TabAdmin:Section({ Text = "Comandos Admin" })
+local SectionScriptsNovos = TabScriptsNovos:Section({ Text = "Scripts Novos" }) -- Renomeado
+local SectionOutros = TabOutros:Section({ Text = "Outros Scripts" })
+local SectionBrookhaven = TabBrookhaven:Section({ Text = "Scripts Brookhaven" })
+local SectionAlicia = TabAlicia:Section({ Text = "Scripts da Alicia" }) -- Seção da nova aba
+
+-- Função para adicionar botões que executam scripts
+local function AddScriptButtons(section, scripts)
+    for _, script in ipairs(scripts) do
+        local name, url = script[1], script[2]
+        section:Button({
+            Text = name,
+            Callback = function()
+                if url == "local" then
+                    warn("Script "..name.." é local, implemente você mesmo.")
+                else
+                    local success, err = pcall(function()
+                        loadstring(game:HttpGet(url))()
+                    end)
+                    if not success then
+                        warn("Erro ao executar "..name..": "..err)
+                    end
+                end
+            end
+        })
+    end
+end
+
+-- Listas de scripts
+local scripts = {
+    {"Fê Emotes", "https://scriptblox.com/raw/Brookhaven-RP-all-emotes-6849"},
+    {"Ghost Hub", "https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub"},
+    {"Infinite Yield", "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"},
+    {"Kill Players", "https://raw.githubusercontent.com/Shadow6698/Kill/main/main.txt"},
+    {"Pesquisar Scripts", "https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/ScriptSearcher"},
+    {"R4D", "https://raw.githubusercontent.com/M1ZZ001/BrookhavenR4D/main/Brookhaven%20R4D%20Script"},
+    {"Rael Hub", "https://raw.githubusercontent.com/Laelmano24/Rael-Hub/main/main.txt"},
+    {"Save Servers", "https://raw.githubusercontent.com/Shadow6698/Sabe-servers/main/Main.txt"},
+    {"Nameless Admin", "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua"},
+    {"Sander X", "https://raw.githubusercontent.com/kigredns/SanderXV4.2.2/refs/heads/main/New.lua"},
+    {"System Broken", "https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"},
+    {"View Itens", "https://raw.githubusercontent.com/Shadow6698/View-itens/main/main.txt"},
+    {"View Players", "https://raw.githubusercontent.com/Shadow6698/View/main/main.txt"},
+    {"Void", "https://raw.githubusercontent.com/Shadow6698/Void-fe/main/main.txt"},
+    {"Portal Gun", "https://raw.githubusercontent.com/Shadow6698/Portal-gun-/main/Main.txt"},
+    {"aimemotes", "https://raw.githubusercontent.com/Shadow6698/Lockemotes/main/Main.txt"},
+    {"Tiger Hub", "https://raw.githubusercontent.com/balintTheDevX/Tiger-X-V3/main/Tiger%20X%20V3.5%20Fixed"},
+    {"Aimbot", "https://pastebin.com/raw/qtZt0Nzb"},
+    {"Hub Universal", "https://raw.githubusercontent.com/scripthubekitten/SCRIPTHUBV3/main/SCRIPTHUBV3"},
+    {"Salvatore", "https://raw.githubusercontent.com/RFR-R1CH4RD/Loader/main/Salvatore.lua"},
+    {"Draw FE", "https://raw.githubusercontent.com/Affexter/Programs/refs/heads/main/scripts/tooldrawFE.lua"},
+    {"Multiplicar Tools", "https://raw.githubusercontent.com/kigredns/NeonDuplicator/refs/heads/main/Script.lua"},
+    {"Chaos Hub", "https://raw.githubusercontent.com/Venom-devX/ChaosHub/main/loader.lua"},
+    {"Rebobination", "https://raw.githubusercontent.com/Shadow6698/rebobination/main/Main.txt"},
+}
+
+local comandos = {
+    {"Nameless Admin", "https://raw.githubusercontent.com/ltseverydayyou/Nameless-Admin/main/Source.lua"},
+    {"Infinite Yield", "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"},
+    {"Reviz Admin", "https://pastebin.com/raw/Caniwq2N"},
+    {"CMD-X", "https://raw.githubusercontent.com/CMD-X/CMD-X/master/Source"},
+    {"Fates Admin", "https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"},
+    {"Angel Cmds", "https://raw.githubusercontent.com/Shadow6698/angel-commands/main/Main.txt"},
+    {"AntKick", "https://raw.githubusercontent.com/Shadow6698/antkick/main/Main.txt"},
+    {"Remove Players", "https://raw.githubusercontent.com/Shadow6698/removeplayers/main/Main.txt"},
+    {"/helpadm", "https://raw.githubusercontent.com/Shadow6698/spawngenio/main/Main.txt"},
+}
+
+-- 📦 Combos em scriptsNovos (funções para combos) + links diretos para scripts únicos
+local scriptsNovos = {
+    {
+        "Combo Universal",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+        end
+    },
+    {
+        "Combo de Brookhaven",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/JaozinScripts/Gumball-Hub/refs/heads/main/GumballHubRetorn2.1.1.1.lua"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Laelmano24/Rael-Hub/main/main.txt"))()
+            loadstring(game:HttpGet("https://scriptblox.com/raw/Brookhaven-RP-all-emotes-6849"))()
+        end
+    },
+    {
+        "Combo de Vazar KK",
+        function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadow6698/Void-fe/main/main.txt"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Shadow6698/Speed-2/main/Main.txt"))()
+        end
+    },
+    {
+        "Hub de Utilidades",
+        "https://raw.githubusercontent.com/Shadow6698/utilidades/main/Main.txt"
+    },
+    {
+        "Virar Bola KKJ",
+        "https://rawscripts.net/raw/Universal-Script-Fe-ball-rolL-9835"
+    },
+    {
+        "Modo Gigante",
+        "https://rawscripts.net/raw/Brookhaven-RP-FE-BIG-AVATAR-43381"
+    }
+}
+
+
+local outros = {
+    {"Angel Executor", "https://raw.githubusercontent.com/Shadow6698/Executor-script/main/Main.txt"},
+    {"Sky Hub", "https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"},
+    {"Arma de Portais", "https://raw.githubusercontent.com/Shadow6698/Arma-de-portais-/main/Main.txt"},
+    {"Buraco Negro Tool", "https://rawscripts.net/raw/Natural-Disaster-Survival-Blackhole-Tool-Control-Unanc*d-Parts-27791"},
+    {"Gravity Gun", "https://scriptblox.com/raw/Universal-Script-Telekinesis-12332"},
+    {"Rejoin", "local"},
+    {"Server Hop", "local"},
+    {"Speed", "https://raw.githubusercontent.com/Shadow6698/Speed-2/main/Main.txt"},
+    {"Dia Infinito", "https://raw.githubusercontent.com/Shadow6698/time-lock/main/README.md"},
+    {"c00lkid Hub", "https://raw.githubusercontent.com/Shadow6698/COOLKIDHUB/main/Main.txt"},
+    {"helpbiel", "https://raw.githubusercontent.com/Shadow6698/helpbiel/main/Main.txt"},
+    {"helpgeison", "https://raw.githubusercontent.com/Shadow6698/helpgeison/main.txt"},
+    {"helpangel", "https://raw.githubusercontent.com/Shadow6698/helpangel/main/Main.txt"},
+}
+
+local brookhavenScripts = {
+    {"Gumball Hub", "https://raw.githubusercontent.com/JaozinScripts/Gumball-Hub/refs/heads/main/GumballHubRetorn2.1.1.1.lua"},
+    {"Sander X", "https://raw.githubusercontent.com/sXPiterXs1111/Sanderxv3.30/main/sanderx3.30"},
+    {"Chaos Hub", "https://raw.githubusercontent.com/Venom-devX/ChaosHub/main/loader.lua"},
+    {"Rael Hub", "https://raw.githubusercontent.com/Laelmano24/Rael-Hub/main/main.txt"},
+    {"Shadow Hub", "https://raw.githubusercontent.com/realgengar/scripts/refs/heads/main/Gui%20Version.Lua"},
+    {"Speed Wave", "https://raw.githubusercontent.com/Shadow6698/vheiclespeed/main/Main.txt"},
+    {"Duplicator Carros", "https://raw.githubusercontent.com/kigredns/Flame-Object/refs/heads/main/script.lua"},
+    {"Coquette Hub", "https://rawscripts.net/raw/Brookhaven-RP-Coquette-Hub-41921"},
+}
+
+
+local aliciaScripts = {
+    {"Ioio da Ladybug", "https://raw.githubusercontent.com/Shadow6698/ladybug/main/Main.txt"},
+}
+
+-- Adicionando os botões nas seções
+AddScriptButtons(SectionScripts, scripts)
+AddScriptButtons(SectionAdmin, comandos)
+AddScriptButtons(SectionScriptsNovos, scriptsNovos) -- Atualizado aqui
+AddScriptButtons(SectionOutros, outros)
+AddScriptButtons(SectionBrookhaven, brookhavenScripts)
+AddScriptButtons(SectionAlicia, aliciaScripts)
+
+TabScripts:Select()
