@@ -118,8 +118,15 @@ local scriptsNovos = {
     {
         "Modo Gigante",
         "https://rawscripts.net/raw/Brookhaven-RP-FE-BIG-AVATAR-43381"
+    },
+    {
+        "Ant Coquete Hub",
+        function()
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/Shadow6698/antbug/main/main.txt'))()
+        end
     }
 }
+
 
 
 local outros = {
