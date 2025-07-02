@@ -121,11 +121,10 @@ local scriptsNovos = {
     },
     {
         "Ant Coquete Hub",
-        function()
-            loadstring(game:HttpGet('https://raw.githubusercontent.com/Shadow6698/antbug/main/main.txt'))()
-        end
+        "https://raw.githubusercontent.com/Shadow6698/antbug/main/main.txt"
     }
 }
+
 
 
 
