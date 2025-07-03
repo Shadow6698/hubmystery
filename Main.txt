@@ -122,6 +122,10 @@ local scriptsNovos = {
     {
         "Ant Coquete Hub",
         "https://raw.githubusercontent.com/Shadow6698/antbug/main/main.txt"
+    },
+    {
+        "God Mode",
+        "https://raw.githubusercontent.com/Shadow6698/godmode/main/Main.txt"
     }
 }
 
