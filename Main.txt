@@ -126,8 +126,13 @@ local scriptsNovos = {
     {
         "God Mode",
         "https://raw.githubusercontent.com/Shadow6698/godmode/main/Main.txt"
+    },
+    {
+        "Evade",
+        "https://raw.githubusercontent.com/Shadow6698/evade/main/Main.txt"
     }
 }
+
 
 
 
