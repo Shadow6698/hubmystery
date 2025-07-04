@@ -130,6 +130,10 @@ local scriptsNovos = {
     {
         "Evade",
         "https://raw.githubusercontent.com/Shadow6698/evade/main/Main.txt"
+    },
+    {
+        "Hub de Espionar",
+        "https://raw.githubusercontent.com/Shadow6698/guiview/main/Main.txt"
     }
 }
 
