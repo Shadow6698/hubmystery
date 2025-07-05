@@ -166,7 +166,9 @@ local brookhavenScripts = {
     {"Speed Wave", "https://raw.githubusercontent.com/Shadow6698/vheiclespeed/main/Main.txt"},
     {"Duplicator Carros", "https://raw.githubusercontent.com/kigredns/Flame-Object/refs/heads/main/script.lua"},
     {"Coquette Hub", "https://rawscripts.net/raw/Brookhaven-RP-Coquette-Hub-41921"},
+    {"AutoTickets", "https://raw.githubusercontent.com/Shadow6698/farmbrookhaven/main/Main.txt"},
 }
+
 
 
 local aliciaScripts = {
