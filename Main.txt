@@ -60,7 +60,7 @@ local scripts = {
     {"View Players", "https://raw.githubusercontent.com/Shadow6698/View/main/main.txt"},
     {"Void", "https://raw.githubusercontent.com/Shadow6698/Void-fe/main/main.txt"},
     {"Portal Gun", "https://raw.githubusercontent.com/Shadow6698/Portal-gun-/main/Main.txt"},
-    {"aimemotes", "https://raw.githubusercontent.com/Shadow6698/Lockemotes/main/Main.txt"},
+    {"freeze emotes", "https://raw.githubusercontent.com/Shadow6698/Lockemotes/main/Main.txt"},
     {"Tiger Hub", "https://raw.githubusercontent.com/balintTheDevX/Tiger-X-V3/main/Tiger%20X%20V3.5%20Fixed"},
     {"Aimbot", "https://pastebin.com/raw/qtZt0Nzb"},
     {"Hub Universal", "https://raw.githubusercontent.com/scripthubekitten/SCRIPTHUBV3/main/SCRIPTHUBV3"},
@@ -159,7 +159,7 @@ local outros = {
 
 local brookhavenScripts = {
     {"Gumball Hub", "https://raw.githubusercontent.com/JaozinScripts/Gumball-Hub/refs/heads/main/GumballHubRetorn2.1.1.1.lua"},
-    {"Sander X", "https://raw.githubusercontent.com/sXPiterXs1111/Sanderxv3.30/main/sanderx3.30"},
+    {"Sander x (use a free version)", "https://rawscripts.net/raw/Brookhaven-RP-Sander-XY-35845"},
     {"Chaos Hub", "https://raw.githubusercontent.com/Venom-devX/ChaosHub/main/loader.lua"},
     {"Rael Hub", "https://raw.githubusercontent.com/Laelmano24/Rael-Hub/main/main.txt"},
     {"Shadow Hub", "https://raw.githubusercontent.com/realgengar/scripts/refs/heads/main/Gui%20Version.Lua"},
@@ -171,6 +171,7 @@ local brookhavenScripts = {
     {"Yin Hub (executa Ayla Hub)", "https://rawscripts.net/raw/Brookhaven-RP-Yin-Hub-21835"},
     {"SP Hub", "https://rawscripts.net/raw/Brookhaven-RP-SP-Hub-New-Uptade-1o3v-33364"},
 }
+
 
 
 
