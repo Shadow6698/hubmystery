@@ -168,7 +168,10 @@ local brookhavenScripts = {
     {"Coquette Hub", "https://rawscripts.net/raw/Brookhaven-RP-Coquette-Hub-41921"},
     {"AutoTickets", "https://raw.githubusercontent.com/Shadow6698/farmbrookhaven/main/Main.txt"},
     {"Farm Ballon", "https://raw.githubusercontent.com/Shadow6698/ballonfarm/main/Main.txt"},
+    {"New Hub 1", "https://raw.githubusercontent.com/Aham5la/Laal/refs/heads/main/Protected_5054203762517405.lua.txt"},
+    {"New Hub 2", "https://raw.githubusercontent.com/LoadDes/StelariumHubfreeBallsLol/refs/heads/main/StelariumHubPre.lua.txt"},
 }
+
 
 
 
