@@ -172,6 +172,7 @@ local brookhavenScripts = {
     {"Yin Hub (executa Ayla Hub)", "https://rawscripts.net/raw/Brookhaven-RP-Yin-Hub-21835"},
     {"SP Hub", "https://rawscripts.net/raw/Brookhaven-RP-SP-Hub-New-Uptade-1o3v-33364"},
     {"RealzX Hub (HubFarms)", "https://rawscripts.net/raw/Brookhaven-RP-RealzXHub-New-Event-44226"},
+    {"Brutus Hub", "https://rawscripts.net/raw/Brookhaven-RP-BRUTUS-HUB-REUPLOUD-44098"},
 }
 
 
