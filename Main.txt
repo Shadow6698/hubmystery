@@ -81,6 +81,7 @@ local comandos = {
     {"AntKick", "https://raw.githubusercontent.com/Shadow6698/antkick/main/Main.txt"},
     {"Remove Players", "https://raw.githubusercontent.com/Shadow6698/removeplayers/main/Main.txt"},
     {"/helpadm", "https://raw.githubusercontent.com/Shadow6698/spawngenio/main/Main.txt"},
+    {"Player Informations", "https://raw.githubusercontent.com/Shadow6698/informations/main/Main.txt"},
 }
 
 -- 📦 Combos em scriptsNovos (funções para combos) + links diretos para scripts únicos
