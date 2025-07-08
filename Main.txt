@@ -1,27 +1,71 @@
 Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Rain-Design/Unnamed/main/Library.lua'))()
 Library.Theme = "Dark"
 
-local Window = Library:Window({
-   Text = "Angel Hub"
-})
+local Window = Library:Window({ Text = "Angel Hub" })
 
--- Abas
+-- Criando abas
 local TabScripts = Window:Tab({ Text = "Scripts" })
 local TabAdmin = Window:Tab({ Text = "Admin" })
-local TabScriptsNovos = Window:Tab({ Text = "Scripts Novos" }) -- Renomeado de Dead Rails
+local TabScriptsNovos = Window:Tab({ Text = "Scripts Novos" })
 local TabOutros = Window:Tab({ Text = "Outros" })
 local TabBrookhaven = Window:Tab({ Text = "Brookhaven" })
-local TabAlicia = Window:Tab({ Text = "Scripts da Alicia" }) -- Nova aba adicionada
+local TabAlicia = Window:Tab({ Text = "Scripts da Alicia" })
+local TabExtras = Window:Tab({ Text = "Extras" })
+local TabFarms = Window:Tab({ Text = "Farms {Brookhaven}" })
+local TabTools = Window:Tab({ Text = "Tools Scripts" })
+local TabChamados = Window:Tab({ Text = "Chamados" })
+
+-- Scroll para as abas
+do
+    local tabsContainer = nil
+
+    if Window.Container then
+        if Window.Container:FindFirstChild("Tabs") then
+            tabsContainer = Window.Container.Tabs
+        elseif Window.Container:FindFirstChild("TabsFrame") then
+            tabsContainer = Window.Container.TabsFrame
+        end
+    end
+
+    if tabsContainer then
+        local parent = tabsContainer.Parent
+
+        local scroll = Instance.new("ScrollingFrame")
+        scroll.Name = "TabsScrollingFrame"
+        scroll.Size = tabsContainer.Size
+        scroll.Position = tabsContainer.Position
+        scroll.BackgroundTransparency = 1
+        scroll.ScrollBarThickness = 6
+        scroll.ScrollBarImageColor3 = Color3.new(0.7, 0.7, 0.7)
+        scroll.ScrollingDirection = Enum.ScrollingDirection.X
+        scroll.Parent = parent
+
+        tabsContainer.Parent = scroll
+        tabsContainer.Position = UDim2.new(0, 0, 0, 0)
+        tabsContainer.Size = UDim2.new(1, 0, 1, 0)
+
+        scroll.CanvasSize = UDim2.new(0, tabsContainer.AbsoluteContentSize.X, 0, 0)
+
+        tabsContainer:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+            scroll.CanvasSize = UDim2.new(0, tabsContainer.AbsoluteContentSize.X, 0, 0)
+        end)
+    else
+        warn("Não foi possível encontrar o container das abas para adicionar scroll.")
+    end
+end
 
 -- Seções
 local SectionScripts = TabScripts:Section({ Text = "Principais Scripts" })
 local SectionAdmin = TabAdmin:Section({ Text = "Comandos Admin" })
-local SectionScriptsNovos = TabScriptsNovos:Section({ Text = "Scripts Novos" }) -- Renomeado
+local SectionScriptsNovos = TabScriptsNovos:Section({ Text = "Scripts Novos" })
 local SectionOutros = TabOutros:Section({ Text = "Outros Scripts" })
 local SectionBrookhaven = TabBrookhaven:Section({ Text = "Scripts Brookhaven" })
-local SectionAlicia = TabAlicia:Section({ Text = "Scripts da Alicia" }) -- Seção da nova aba
+local SectionAlicia = TabAlicia:Section({ Text = "Scripts da Alicia" })
+local SectionExtras = TabExtras:Section({ Text = "Scripts Extras" })
+local SectionFarms = TabFarms:Section({ Text = "Scripts de Farm" })
+local SectionTools = TabTools:Section({ Text = "Ferramentas e Armas" })
+local SectionChamados = TabChamados:Section({ Text = "Scripts de Chamados" })
 
--- Função para adicionar botões que executam scripts
 local function AddScriptButtons(section, scripts)
     for _, script in ipairs(scripts) do
         local name, url = script[1], script[2]
@@ -29,7 +73,7 @@ local function AddScriptButtons(section, scripts)
             Text = name,
             Callback = function()
                 if url == "local" then
-                    warn("Script "..name.." é local, implemente você mesmo.")
+                    warn("Script "..name.." é local.")
                 else
                     local success, err = pcall(function()
                         loadstring(game:HttpGet(url))()
@@ -43,7 +87,8 @@ local function AddScriptButtons(section, scripts)
     end
 end
 
--- Listas de scripts
+-- Scripts para cada aba
+
 local scripts = {
     {"Fê Emotes", "https://scriptblox.com/raw/Brookhaven-RP-all-emotes-6849"},
     {"Ghost Hub", "https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub"},
@@ -59,7 +104,6 @@ local scripts = {
     {"View Itens", "https://raw.githubusercontent.com/Shadow6698/View-itens/main/main.txt"},
     {"View Players", "https://raw.githubusercontent.com/Shadow6698/View/main/main.txt"},
     {"Void", "https://raw.githubusercontent.com/Shadow6698/Void-fe/main/main.txt"},
-    {"Portal Gun", "https://raw.githubusercontent.com/Shadow6698/Portal-gun-/main/Main.txt"},
     {"freeze emotes", "https://raw.githubusercontent.com/Shadow6698/Lockemotes/main/Main.txt"},
     {"Tiger Hub", "https://raw.githubusercontent.com/balintTheDevX/Tiger-X-V3/main/Tiger%20X%20V3.5%20Fixed"},
     {"Aimbot", "https://pastebin.com/raw/qtZt0Nzb"},
@@ -80,11 +124,8 @@ local comandos = {
     {"Angel Cmds", "https://raw.githubusercontent.com/Shadow6698/angel-commands/main/Main.txt"},
     {"AntKick", "https://raw.githubusercontent.com/Shadow6698/antkick/main/Main.txt"},
     {"Remove Players", "https://raw.githubusercontent.com/Shadow6698/removeplayers/main/Main.txt"},
-    {"/helpadm", "https://raw.githubusercontent.com/Shadow6698/spawngenio/main/Main.txt"},
-    {"Player Informations", "https://raw.githubusercontent.com/Shadow6698/informations/main/Main.txt"},
 }
 
--- 📦 Combos em scriptsNovos (funções para combos) + links diretos para scripts únicos
 local scriptsNovos = {
     {
         "Combo Universal",
@@ -112,50 +153,27 @@ local scriptsNovos = {
         "Hub de Utilidades",
         "https://raw.githubusercontent.com/Shadow6698/utilidades/main/Main.txt"
     },
-    {
-        "Virar Bola KKJ",
-        "https://rawscripts.net/raw/Universal-Script-Fe-ball-rolL-9835"
-    },
-    {
-        "Modo Gigante",
-        "https://rawscripts.net/raw/Brookhaven-RP-FE-BIG-AVATAR-43381"
-    },
-    {
-        "Ant Coquete Hub",
-        "https://raw.githubusercontent.com/Shadow6698/antbug/main/main.txt"
-    },
-    {
-        "God Mode",
-        "https://raw.githubusercontent.com/Shadow6698/godmode/main/Main.txt"
-    },
-    {
-        "Evade",
-        "https://raw.githubusercontent.com/Shadow6698/evade/main/Main.txt"
-    },
-    {
-        "Hub de Espionar",
-        "https://raw.githubusercontent.com/Shadow6698/guiview/main/Main.txt"
-    }
 }
 
-
-
-
+local extras = {
+    {"Player Informations", "https://raw.githubusercontent.com/Shadow6698/informations/main/Main.txt"},
+    {"God Mode", "https://raw.githubusercontent.com/Shadow6698/godmode/main/Main.txt"},
+    {"Evade", "https://raw.githubusercontent.com/Shadow6698/evade/main/Main.txt"},
+    {"Hub de Espionar", "https://raw.githubusercontent.com/Shadow6698/guiview/main/Main.txt"},
+    {"Ant Coquete Hub", "https://raw.githubusercontent.com/Shadow6698/antbug/main/main.txt"},
+    {"Modo Gigante", "https://rawscripts.net/raw/Brookhaven-RP-FE-BIG-AVATAR-43381"},
+    {"Virar Bola KKJ", "https://rawscripts.net/raw/Universal-Script-Fe-ball-rolL-9835"},
+    {"c00lkid Hub", "https://raw.githubusercontent.com/Shadow6698/COOLKIDHUB/main/Main.txt"},
+    {"Dia Infinito", "https://raw.githubusercontent.com/Shadow6698/time-lock/main/README.md"},
+    {"Angel Executor", "https://raw.githubusercontent.com/Shadow6698/Executor-script/main/Main.txt"},
+}
 
 local outros = {
-    {"Angel Executor", "https://raw.githubusercontent.com/Shadow6698/Executor-script/main/Main.txt"},
     {"Sky Hub", "https://raw.githubusercontent.com/yofriendfromschool1/Sky-Hub/main/FE%20Trolling%20GUI.luau"},
-    {"Arma de Portais", "https://raw.githubusercontent.com/Shadow6698/Arma-de-portais-/main/Main.txt"},
-    {"Buraco Negro Tool", "https://rawscripts.net/raw/Natural-Disaster-Survival-Blackhole-Tool-Control-Unanc*d-Parts-27791"},
-    {"Gravity Gun", "https://scriptblox.com/raw/Universal-Script-Telekinesis-12332"},
     {"Rejoin", "local"},
     {"Server Hop", "local"},
     {"Speed", "https://raw.githubusercontent.com/Shadow6698/Speed-2/main/Main.txt"},
-    {"Dia Infinito", "https://raw.githubusercontent.com/Shadow6698/time-lock/main/README.md"},
-    {"c00lkid Hub", "https://raw.githubusercontent.com/Shadow6698/COOLKIDHUB/main/Main.txt"},
-    {"helpbiel", "https://raw.githubusercontent.com/Shadow6698/helpbiel/main/Main.txt"},
-    {"helpgeison", "https://raw.githubusercontent.com/Shadow6698/helpgeison/main.txt"},
-    {"helpangel", "https://raw.githubusercontent.com/Shadow6698/helpangel/main/Main.txt"},
+    -- "Arma de Portais" foi removida daqui e movida para toolScripts
 }
 
 local brookhavenScripts = {
@@ -167,32 +185,46 @@ local brookhavenScripts = {
     {"Speed Wave", "https://raw.githubusercontent.com/Shadow6698/vheiclespeed/main/Main.txt"},
     {"Duplicator Carros", "https://raw.githubusercontent.com/kigredns/Flame-Object/refs/heads/main/script.lua"},
     {"Coquette Hub", "https://rawscripts.net/raw/Brookhaven-RP-Coquette-Hub-41921"},
-    {"AutoTickets", "https://raw.githubusercontent.com/Shadow6698/farmbrookhaven/main/Main.txt"},
-    {"Farm Ballon", "https://raw.githubusercontent.com/Shadow6698/ballonfarm/main/Main.txt"},
     {"Yin Hub (executa Ayla Hub)", "https://rawscripts.net/raw/Brookhaven-RP-Yin-Hub-21835"},
     {"SP Hub", "https://rawscripts.net/raw/Brookhaven-RP-SP-Hub-New-Uptade-1o3v-33364"},
-    {"RealzX Hub (HubFarms)", "https://rawscripts.net/raw/Brookhaven-RP-RealzXHub-New-Event-44226"},
     {"Brutus Hub", "https://rawscripts.net/raw/Brookhaven-RP-BRUTUS-HUB-REUPLOUD-44098"},
 }
 
+local farmBrookhavenScripts = {
+    {"Farm Ballon", "https://raw.githubusercontent.com/Shadow6698/ballonfarm/main/Main.txt"},
+    {"AutoTickets", "https://raw.githubusercontent.com/Shadow6698/farmbrookhaven/main/Main.txt"},
+    {"RealzX Hub (HubFarms)", "https://rawscripts.net/raw/Brookhaven-RP-RealzXHub-New-Event-44226"},
+}
 
-
-
-
-
-
-
+local toolScripts = {
+    {"Arma de Portais", "https://raw.githubusercontent.com/Shadow6698/Arma-de-portais-/main/Main.txt"}, -- MOVIDA PARA AQUI
+    {"Portal Gun", "https://raw.githubusercontent.com/Shadow6698/Portal-gun-/main/Main.txt"},
+    {"Buraco Negro Tool", "https://rawscripts.net/raw/Natural-Disaster-Survival-Blackhole-Tool-Control-Unanc*d-Parts-27791"},
+    {"Gravity Gun", "https://scriptblox.com/raw/Universal-Script-Telekinesis-12332"},
+}
 
 local aliciaScripts = {
     {"Ioio da Ladybug", "https://raw.githubusercontent.com/Shadow6698/ladybug/main/Main.txt"},
 }
 
--- Adicionando os botões nas seções
+local chamadosScripts = {
+    {"/helpadm", "https://raw.githubusercontent.com/Shadow6698/spawngenio/main/Main.txt"},
+    {"helpbiel", "https://raw.githubusercontent.com/Shadow6698/helpbiel/main/Main.txt"},
+    {"helpangel", "https://raw.githubusercontent.com/Shadow6698/helpangel/main/Main.txt"},
+    {"helpgeison", "https://raw.githubusercontent.com/Shadow6698/helpgeison/main.txt"},
+}
+
+-- Adiciona os botões nas respectivas seções
 AddScriptButtons(SectionScripts, scripts)
 AddScriptButtons(SectionAdmin, comandos)
-AddScriptButtons(SectionScriptsNovos, scriptsNovos) -- Atualizado aqui
+AddScriptButtons(SectionScriptsNovos, scriptsNovos)
 AddScriptButtons(SectionOutros, outros)
 AddScriptButtons(SectionBrookhaven, brookhavenScripts)
+AddScriptButtons(SectionExtras, extras)
+AddScriptButtons(SectionFarms, farmBrookhavenScripts)
+AddScriptButtons(SectionTools, toolScripts)
 AddScriptButtons(SectionAlicia, aliciaScripts)
+AddScriptButtons(SectionChamados, chamadosScripts)
 
+-- Seleciona a aba Scripts por padrão
 TabScripts:Select()
