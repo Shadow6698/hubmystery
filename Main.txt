@@ -1,7 +1,7 @@
 Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Rain-Design/Unnamed/main/Library.lua'))()
 Library.Theme = "Dark"
 
-local Window = Library:Window({ Text = "Angel Hub" })
+local Window = Library:Window({ Text = " _Angel Hub_ v2" })
 
 -- Criando abas
 local TabScripts = Window:Tab({ Text = "Scripts" })
