@@ -153,7 +153,12 @@ local scriptsNovos = {
         "Hub de Utilidades",
         "https://raw.githubusercontent.com/Shadow6698/utilidades/main/Main.txt"
     },
+    {
+        "MagoByte Hub",
+        "https://raw.githubusercontent.com/Shadow6698/hubsecrety/main/Main.txt"
+    }
 }
+
 
 local extras = {
     {"Player Informations", "https://raw.githubusercontent.com/Shadow6698/informations/main/Main.txt"},
